@@ -1,0 +1,26 @@
+buildscript {
+	repositories {
+		google()
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.3'
+		classpath 'com.google.gms:google-services:3.1.0'
+	}
+}
+
+allprojects {
+	repositories {
+		google()
+		jcenter()
+	}
+}
+
+task clean(type: Delete) {
+	delete rootProject.buildDir
+}
+
+ext {
+	supportLibraryVersion = '25.4.0'
+	firebaseLibraryVersion = '11.0.1'
+}

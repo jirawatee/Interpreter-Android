@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="tts_init_msg">
+		<item>Sorry: TH is no data.</item>
+		<item>SUCCESS: TH is supported.</item>
+		<item>SUCCESS: Only EN is available.</item>
+		<item>ERROR: Initial failed.</item>
+		<item>ERROR: No internet connection.</item>
+		<item>ERROR: Network timeout.</item>
+		<item>ERROR: Not install yet.</item>
+	</string-array>
+</resources>

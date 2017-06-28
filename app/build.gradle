@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+	compileSdkVersion 25
+	buildToolsVersion '26.0.0'
+	defaultConfig {
+		applicationId 'com.example.interpreter'
+		targetSdkVersion 25
+		versionCode 1
+		versionName '1.0'
+	}
+	buildTypes {
+		release {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+		debug {
+			minifyEnabled false
+			shrinkResources false
+			splits.abi.enable = false
+			splits.density.enable = false
+			aaptOptions.cruncherEnabled = false
+		}
+	}
+	flavorDimensions 'interpreter'
+	productFlavors {
+		dev {
+			dimension 'interpreter'
+			minSdkVersion 25
+			resConfigs 'en', 'xxxhdpi'
+		}
+		prod {
+			dimension 'interpreter'
+			minSdkVersion 21
+			resConfigs 'en'
+		}
+	}
+	dexOptions {
+		preDexLibraries true
+		maxProcessCount 8
+	}
+}
+
+dependencies {
+	compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+	compile "com.google.firebase:firebase-database:$firebaseLibraryVersion"
+}
+
+apply plugin: 'com.google.gms.google-services'
