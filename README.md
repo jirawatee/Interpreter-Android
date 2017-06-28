@@ -1,5 +1,5 @@
 # Interpreter (EN-TH)
-This app will translate your speech from English to Thai then speak out in Thai in the realtime.
+This app is my idea to POC how to translate your speech from English to Thai then speak out in Thai in the realtime.
 
 ## Prerequisites
 * Supported Android API 16 and newer
