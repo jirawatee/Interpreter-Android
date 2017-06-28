@@ -51,3 +51,6 @@ proguard/
 .externalNativeBuild
 
 google-services.json
+
+**/node_modules/*
+**/.firebaserc
