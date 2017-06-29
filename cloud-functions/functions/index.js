@@ -22,7 +22,7 @@ exports.translate = functions.database.ref('/messages/{languageID}/{messageID}')
 });
 
 function createTranslateUrl(source, target, payload) {
-  return `https://www.googleapis.com/language/translate/v2?key=${functions.config().firebase.apiKey}&source=${source}&target=${target}&q=${payload}`;
+  return `https://www.googleapis.com/language/translate/v2?key=AIzaSyBy9MHxlccsJkIQHCTEscucmqf4C76t8oE&source=${source}&target=${target}&q=${payload}`;
 }
 
 function createTranslationPromise(source, target, snapshot) {
