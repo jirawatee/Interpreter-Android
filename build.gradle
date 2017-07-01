@@ -22,5 +22,5 @@ task clean(type: Delete) {
 
 ext {
 	supportLibraryVersion = '25.4.0'
-	firebaseLibraryVersion = '11.0.1'
+	firebaseLibraryVersion = '11.0.2'
 }

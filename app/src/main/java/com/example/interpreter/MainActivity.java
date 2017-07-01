@@ -9,10 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.interpreter.models.Message;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -22,8 +19,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	public static final int MY_DATA_CHECK_CODE = 2;
 	public static TextToSpeech myTTS;
 
-	private DatabaseReference mMessagesThaiRef;
 	private TextView mTextView;
+	private DatabaseReference mMessagesThaiRef;
 	private ValueEventListener valueEventListener;
 
 	@Override
@@ -38,10 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.image_view:
-				// TODO: Remove old listenter
-				if (valueEventListener != null) {
-					mMessagesThaiRef.removeEventListener(valueEventListener);
-				}
+				// TODO: 4.Remove latest listenter
 
 				if (!isSpeechRecognitionActivityPresented(this)) {
 					Toast.makeText(this, R.string.error_support_stt, Toast.LENGTH_LONG).show();
@@ -56,35 +50,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 		switch (requestCode) {
 			case RESULT_SPEECH:
 				if (resultCode == RESULT_OK && null != data) {
-					// TODO: Get text from speech
 					ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 					mTextView.setText(text.get(0));
 					Message message = new Message(text.get(0), false);
 
-					// TODO: Get database reference
-					DatabaseReference mMessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
+					// TODO: 1.Get database reference (messages)
 
-					// TODO: Push new message
-					DatabaseReference mEngMsgRef = mMessagesRef.child("en");
-					String topicKey = mEngMsgRef.push().getKey();
-					mEngMsgRef.child(topicKey).setValue(message);
+					// TODO: 2.Push new message (en)
 
-					// TODO: Listen Thai message
-					mMessagesThaiRef = mMessagesRef.child("th").child(topicKey);
-					valueEventListener = new ValueEventListener() {
-						@Override
-						public void onDataChange(DataSnapshot dataSnapshot) {
-							Message messages = dataSnapshot.getValue(Message.class);
-							if (messages != null) {
-								myTTS.speak(messages.message, TextToSpeech.QUEUE_FLUSH, null);
-							}
-						}
-						@Override
-						public void onCancelled(DatabaseError databaseError) {
-							Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
-						}
-					};
-					mMessagesThaiRef.addValueEventListener(valueEventListener);
+					// TODO: 3.Listen Thai message
 				}
 				break;
 			case MY_DATA_CHECK_CODE:
@@ -96,9 +70,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	@Override
 	protected void onStop() {
 		super.onStop();
-		// TODO: Remove listener
-		if (valueEventListener != null) {
-			mMessagesThaiRef.removeEventListener(valueEventListener);
-		}
+		// TODO: 5.Remove listener
 	}
 }
