@@ -9,7 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.interpreter.models.Message;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -35,7 +38,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.image_view:
-				// TODO: 4.Remove latest listenter
+				if (valueEventListener != null) {
+					mMessagesThaiRef.removeEventListener(valueEventListener);
+				}
 
 				if (!isSpeechRecognitionActivityPresented(this)) {
 					Toast.makeText(this, R.string.error_support_stt, Toast.LENGTH_LONG).show();
@@ -54,11 +59,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 					mTextView.setText(text.get(0));
 					Message message = new Message(text.get(0), false);
 
-					// TODO: 1.Get database reference (messages)
-
-					// TODO: 2.Push new message (en)
-
-					// TODO: 3.Listen Thai message
+					DatabaseReference mMessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
+					DatabaseReference mEngMsgRef = mMessagesRef.child("en");
+					String topicKey = mEngMsgRef.push().getKey();
+					mEngMsgRef.child(topicKey).setValue(message);
+					mMessagesThaiRef = mMessagesRef.child("th").child(topicKey);
+					valueEventListener = new ValueEventListener() {
+						@Override
+						public void onDataChange(DataSnapshot dataSnapshot) {
+							Message messages = dataSnapshot.getValue(Message.class);
+							if (messages != null) {
+								myTTS.speak(messages.message, TextToSpeech.QUEUE_FLUSH, null);
+							}
+						}
+						@Override
+						public void onCancelled(DatabaseError databaseError) {
+							Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+						}
+					};
+					mMessagesThaiRef.addValueEventListener(valueEventListener);
 				}
 				break;
 			case MY_DATA_CHECK_CODE:
@@ -70,6 +89,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	@Override
 	protected void onStop() {
 		super.onStop();
-		// TODO: 5.Remove listener
+		if (valueEventListener != null) {
+			mMessagesThaiRef.removeEventListener(valueEventListener);
+		}
 	}
 }
