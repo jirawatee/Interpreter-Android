@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion '26.0.0'
+	compileSdkVersion compileAndTargetSdk
+	buildToolsVersion '26.0.1'
 	defaultConfig {
 		applicationId 'com.example.interpreter'
-		targetSdkVersion 25
+		targetSdkVersion compileAndTargetSdk
 		versionCode 1
 		versionName '1.0'
 	}
@@ -27,12 +27,12 @@ android {
 		dev {
 			dimension 'interpreter'
 			minSdkVersion 25
-			resConfigs 'en', 'xxxhdpi'
+			resConfigs('en', 'xxxhdpi')
 		}
 		prod {
 			dimension 'interpreter'
 			minSdkVersion 21
-			resConfigs 'en'
+			resConfigs('en')
 		}
 	}
 	dexOptions {
