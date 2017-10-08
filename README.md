@@ -2,8 +2,8 @@
 This app is my idea to POC how to translate your speech from English to Thai then speak out in Thai in the realtime.
 
 ## Prerequisites
-* Supported Android API 16 and newer
-* Google Play services 11.0.x or newer
+* Supported Android API 16 or newer
+* Google Play services 11.4.2 or newer
 * Android Studio 2.3.x or higher
 * google-services.json in app-level folder
 
