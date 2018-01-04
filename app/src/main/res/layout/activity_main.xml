@@ -21,6 +21,7 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@id/image_view"
 		android:layout_centerHorizontal="true"
-		android:text="@string/tv_input"/>
+		android:text="@string/tv_input"
+		android:textSize="32sp"/>
 
 </RelativeLayout>

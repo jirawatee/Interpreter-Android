@@ -31,7 +31,7 @@ public class BaseActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	@Override
 	public void onInit(int initStatus) {
 		String[] statusMsg = getResources().getStringArray(R.array.tts_init_msg);
-		Locale mThai = new Locale("th", "TH");
+		Locale mThai = new Locale("z", "TH");
 		String msg = "";
 
 		switch (initStatus) {

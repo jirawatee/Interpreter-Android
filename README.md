@@ -3,8 +3,8 @@ This app is my idea to POC how to translate your speech from English to Thai the
 
 ## Prerequisites
 * Supported Android API 16 or newer
-* Google Play services 11.4.2 or newer
-* Android Studio 2.3.x or higher
+* Google Play services 11.8.0 or newer
+* Android Studio 3.0.1 or higher
 * google-services.json in app-level folder
 
 ## Contents

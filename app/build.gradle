@@ -2,39 +2,40 @@ apply plugin: 'com.android.application'
 
 android {
 	compileSdkVersion compileAndTargetSdk
-	buildToolsVersion '26.0.2'
+	buildToolsVersion '27.0.3'
+
 	defaultConfig {
 		applicationId 'com.example.interpreter'
+		minSdkVersion compileAndTargetSdk
 		targetSdkVersion compileAndTargetSdk
 		versionCode 1
 		versionName '1.0'
 	}
+
 	buildTypes {
 		release {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 		}
 		debug {
-			minifyEnabled false
-			shrinkResources false
 			splits.abi.enable = false
 			splits.density.enable = false
 			aaptOptions.cruncherEnabled = false
 		}
 	}
+
 	flavorDimensions 'interpreter'
 	productFlavors {
 		dev {
 			dimension 'interpreter'
-			minSdkVersion 26
 			resConfigs('en', 'xxxhdpi')
 		}
 		prod {
 			dimension 'interpreter'
-			minSdkVersion 21
 			resConfigs('en')
 		}
 	}
+
 	dexOptions {
 		preDexLibraries true
 		maxProcessCount 8
@@ -42,7 +43,9 @@ android {
 }
 
 dependencies {
-	implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+	implementation ("com.android.support:appcompat-v7:$supportLibraryVersion") {
+		force = true
+	}
 	implementation "com.google.firebase:firebase-database:$firebaseLibraryVersion"
 }
 

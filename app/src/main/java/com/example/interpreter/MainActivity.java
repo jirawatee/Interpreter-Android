@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		mTextView = (TextView) findViewById(R.id.text_view);
+		mTextView = findViewById(R.id.text_view);
 		findViewById(R.id.image_view).setOnClickListener(this);
 	}
 
@@ -61,15 +61,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 					DatabaseReference mMessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
 					DatabaseReference mEngMsgRef = mMessagesRef.child("en");
+
 					String topicKey = mEngMsgRef.push().getKey();
 					mEngMsgRef.child(topicKey).setValue(message);
+
 					mMessagesThaiRef = mMessagesRef.child("th").child(topicKey);
 					valueEventListener = new ValueEventListener() {
 						@Override
 						public void onDataChange(DataSnapshot dataSnapshot) {
 							Message messages = dataSnapshot.getValue(Message.class);
 							if (messages != null) {
-								myTTS.speak(messages.message, TextToSpeech.QUEUE_FLUSH, null);
+								mTextView.setText(messages.message);
+								myTTS.speak(messages.message, TextToSpeech.QUEUE_FLUSH, null, "DEFAULT");
 							}
 						}
 						@Override
