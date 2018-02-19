@@ -6,7 +6,6 @@ android {
 
 	defaultConfig {
 		applicationId 'com.example.interpreter'
-		minSdkVersion compileAndTargetSdk
 		targetSdkVersion compileAndTargetSdk
 		versionCode 1
 		versionName '1.0'
@@ -31,10 +30,12 @@ android {
 	flavorDimensions 'interpreter'
 	productFlavors {
 		dev {
+			minSdkVersion compileAndTargetSdk
 			dimension 'interpreter'
 			resConfigs('en', 'xxxhdpi')
 		}
 		prod {
+			minSdkVersion 21
 			dimension 'interpreter'
 			resConfigs('en')
 		}

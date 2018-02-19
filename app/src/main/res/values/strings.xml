@@ -1,5 +1,8 @@
 <resources>
 	<string name="app_name">Interpreter</string>
-	<string name="tv_input">Tap and speak in English</string>
+	<string name="tv_input">Tap and Speak</string>
 	<string name="error_support_stt">Ops! Your device doesn\'t support Speech to Text</string>
+	<string name="txt_input">Input: %s</string>
+	<string name="txt_output">Output: %s</string>
+	<string name="select_lang">Select language to %s</string>
 </resources>

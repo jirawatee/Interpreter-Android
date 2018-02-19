@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:padding="@dimen/activity_margin"
 	tools:context="com.example.interpreter.MainActivity">
 
-	<ImageView
-		android:id="@+id/image_view"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerInParent="true"
-		android:contentDescription="@string/app_name"
-		android:src="@drawable/ic_mic_orange"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/txt_microphone"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/txt_input"
+			style="@style/CustomTextView"
+			android:text="@string/txt_input" />
+
+		<TextView
+			android:id="@+id/txt_output"
+			style="@style/CustomTextView"
+			android:text="@string/txt_output" />
+
+	</LinearLayout>
 
 	<TextView
-		android:id="@+id/text_view"
+		android:id="@+id/txt_microphone"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/image_view"
+		android:layout_above="@+id/zone_bottom"
 		android:layout_centerHorizontal="true"
-		android:text="@string/tv_input"
-		android:textSize="32sp"/>
+		android:layout_margin="@dimen/activity_margin"
+		android:drawableTop="@drawable/ic_mic_orange"
+		android:text="@string/tv_input" />
+
+	<LinearLayout
+		android:id="@+id/zone_bottom"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/btn_input"
+			style="@style/CustomButton"
+			android:text="@string/txt_input" />
+
+		<Button
+			android:id="@+id/btn_output"
+			style="@style/CustomButton"
+			android:text="@string/txt_output" />
+
+	</LinearLayout>
 
 </RelativeLayout>
