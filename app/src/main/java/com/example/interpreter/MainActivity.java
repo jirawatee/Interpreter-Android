@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		bindWidget();
+
 		mLanguages = getResources().getStringArray(R.array.languages);
 		mLocales = getResources().getStringArray(R.array.locales);
 		checkTTSCodeData();
