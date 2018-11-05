@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
 	compileSdkVersion compileAndTargetSdk
-	buildToolsVersion '27.0.3'
+	buildToolsVersion '28.0.3'
 
 	defaultConfig {
 		applicationId 'com.example.interpreter'
@@ -51,7 +51,8 @@ dependencies {
 	implementation ("com.android.support:appcompat-v7:$supportLibraryVersion") {
 		force = true
 	}
-	implementation "com.google.firebase:firebase-database:$firebaseLibraryVersion"
+	implementation "com.google.firebase:firebase-core:16.0.4"
+	implementation "com.google.firebase:firebase-database:16.0.4"
 }
 
 apply plugin: 'com.google.gms.google-services'
