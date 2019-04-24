@@ -3,7 +3,7 @@ This app is my idea to POC how to translate your speech from English to Thai the
 
 ## Prerequisites
 * Supported Android 4.1 or newer
-* Android Studio 3.3.2 or higher
+* Android Studio 3.4.0 or newer
 * google-services.json in app-level folder
 
 ## Contents
@@ -16,7 +16,14 @@ This app is my idea to POC how to translate your speech from English to Thai the
 ## Screenshots
 <table width="100%">
 	<tr>
-	  <th width="25%" align="center"><img src="https://user-images.githubusercontent.com/1763410/27629897-01769b5c-5c1e-11e7-94b2-8340d51b67fd.png"></th>
-    <th width="25%" align="center"><img src="https://user-images.githubusercontent.com/1763410/27629964-3b85881c-5c1e-11e7-9c60-7a1a0c5db313.png"></th>
+	  <th width="33%" align="center">
+      <img src="https://user-images.githubusercontent.com/1763410/56652485-af705880-66b5-11e9-98e0-622801777575.png">
+    </th>
+    <th width="33%" align="center">
+      <img src="https://user-images.githubusercontent.com/1763410/56652487-b008ef00-66b5-11e9-89ae-7f59ad324b39.png">
+    </th>
+    <th width="33%" align="center">
+      <img src="https://user-images.githubusercontent.com/1763410/56652486-b008ef00-66b5-11e9-8cae-53a6fb91ae26.png">
+    </th>
 	</tr>
 </table>
