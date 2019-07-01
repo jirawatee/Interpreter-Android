@@ -48,11 +48,9 @@ android {
 }
 
 dependencies {
-	implementation ('androidx.appcompat:appcompat:1.0.0') {
-		force = true
-	}
-	implementation "com.google.firebase:firebase-core:17.0.0"
-	implementation "com.google.firebase:firebase-database:18.0.0"
+	implementation 'androidx.appcompat:appcompat:1.0.2'
+	implementation 'com.google.firebase:firebase-core:17.0.0'
+	implementation 'com.google.firebase:firebase-database:18.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
